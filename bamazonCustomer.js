@@ -1,6 +1,7 @@
 //cfonts, colors, inquirer
 
 const mysql = require("mysql");
+const inquirer = require("inquirer");
 const AsciiTable = require('ascii-table')
 
 const connection = mysql.createConnection({
@@ -92,18 +93,28 @@ function readProducts() {
         // Log all results of the SELECT statement
         // console.log(res);
         const table = new AsciiTable('Bamazon Products')
-        table.setHeading(`Item ID`,`Product Name`,`Department Name`,
-        `Price`,`Stock Quantity`);
-        table.setAlign(4, AsciiTable.CENTER);
-        for(let i = 0; i<res.length; i++){
+        table.setHeading(`Item ID`, `Product Name`, `Price`);
+        for (let i = 0; i < res.length; i++) {
             let item_id = res[i].item_id;
             let product_name = res[i].product_name;
-            let department_name = res[i].department_name;
             let price = `$${res[i].price}`;
-            let stock_quantity = res[i].stock_quantity;
-            table.addRow(item_id,product_name,department_name,price,stock_quantity);
+            table.addRow(item_id, product_name, price);
         }
         console.log(table.toString());
+        inquirer
+            .prompt([{
+                name: "ID",
+                type: "input",
+                message: "What product ID are you interested in?"
+            },
+                {
+                    name: "Units",
+                    type: "input",
+                    message: "How many of this product would you like to purchase?"
+                }])
+            .then(function (answer) {
+                console.log("Checking Stock...\n");
+            });
         connection.end();
     });
 }
