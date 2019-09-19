@@ -77,7 +77,6 @@ function manageProducts() {
                 for (let i = 0; i < res.length; i++) {
                     productNames.push(res[i].product_name);
                 }
-                console.log(productNames);
                 inquirer.prompt([{
                     name: `product`,
                     message: `Which of these products would you like to add more too?`,

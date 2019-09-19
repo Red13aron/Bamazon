@@ -63,14 +63,13 @@ function purchaseProducts() {
                             console.log(`Now printing your cost...\n`);
                             let newStock = stock - answer.Units;
                             let custCost = answer.Units * res[0].price;
-                            const query = connection.query(
-                                `UPDATE products SET stock_quantity = ${newStock} WHERE item_id = ${answer.ID}`,
+                            connection.query(`UPDATE products SET stock_quantity = ${newStock}, product_sales = product_sales + ${custCost} WHERE item_id = ${answer.ID}`,
                                 function (err, res) {
                                     if (err) throw err;
                                     console.log(`Your total price is: ${custCost}`);
                                 }
                             );
-                        
+                                
                         }
                         else if(stock < answer.Units){
                             console.log(`Insufficient quantity!`);
