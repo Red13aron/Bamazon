@@ -121,7 +121,13 @@ function manageProducts() {
                 type:`input`
             }]).then(function(answer){
                 console.log(`Now entering your new product...\n`);
-                console.log(answer);
+                 connection.query(`INSERT INTO products(product_name, department_name, price, stock_quantity)
+                  VALUES('${answer.product_name}', '${answer.department_name}', '${answer.price}', '${answer.stock_quantity}');`, function(err, res){
+                    if(err) throw err;
+                    console.log(res);
+                    console.log(`You have succefully added the new product ${answer.product_name}`);
+                    connection.end();
+                  });
             });
         }
 
