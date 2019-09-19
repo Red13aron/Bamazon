@@ -22,7 +22,7 @@ VALUES ("Play-Doh Clay 36-Case", "Toys And Games", 24.99, 1245, 499.80),
  ("Roku Express Media Player", "Electronics", 29.88, 7649, 2270.88),
  ("Wyze Cam 1080p", "Cameras And Photo", 25.98, 4, 51.96),
  ("Fujifilm Instax Film Value Pack", "Cameras And Photo", 30.90, 10999, 3399.00),
- ("8'' Selfie Ring Light with Tripod", "Camera And Photo", 31.99, 31432, 10076.85),
+ ("8'' Selfie Ring Light with Tripod", "Cameras And Photo", 31.99, 31432, 10076.85),
  ("Legend of Zelda Link's Awakening", "Video Games", 59.99, 6711, 35994.00);
 
 CREATE TABLE departments (
