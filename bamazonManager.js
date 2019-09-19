@@ -53,6 +53,21 @@ function manageProducts() {
             });
 
         }
+        else if(answer.options === `View Low Inventory`){
+            connection.query(`SELECT * FROM products WHERE stock_quantity < 5`, function(err, res){
+                if(err) throw err;
+                const table = new AsciiTable('Bamazon Products')
+                table.setHeading(`Item ID`, `Product Name`, `Price`, `Stock Quantity`);
+                for (let i = 0; i < res.length; i++) {
+                    let item_id = res[i].item_id;
+                    let product_name = res[i].product_name;
+                    let price = `$${res[i].price}`;
+                    let stock_quantity = res[i].stock_quantity;
+                    table.addRow(item_id, product_name, price, stock_quantity);
+                }
+                console.log(table.toString());
+            })
+        }
         connection.end();
     });
 }

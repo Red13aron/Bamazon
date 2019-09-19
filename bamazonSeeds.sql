@@ -19,7 +19,7 @@ VALUES ("Play-Doh Clay 36-Case", "Toys And Games", 24.99, 1245),
  ("Fire TV Stick with Alexa", "Electronics", 39.99, 257),
  ("All-New Fire 7 Tablet", "Electronics", 49.99, 512),
  ("Roku Express Media Player", "Electronics", 29.88, 7649),
- ("Wyze Cam 1080p", "Cameras And Photo", 25.98, 53),
+ ("Wyze Cam 1080p", "Cameras And Photo", 25.98, 4),
  ("Fujifilm Instax Film Value Pack", "Cameras And Photo", 30.90, 10999),
  ("8'' Selfie Ring Light with Tripod", "Camera And Photo", 31.99, 31432),
  ("Legend of Zelda Link's Awakening", "Video Games", 59.99, 6711);
