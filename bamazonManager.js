@@ -50,6 +50,7 @@ function manageProducts() {
                     table.addRow(item_id, product_name, price, stock_quantity);
                 }
                 console.log(table.toString());
+                connection.end();
             });
 
         }
@@ -66,8 +67,38 @@ function manageProducts() {
                     table.addRow(item_id, product_name, price, stock_quantity);
                 }
                 console.log(table.toString());
+                connection.end();
             })
         }
-        connection.end();
+        else if(answer.options === `Add to Inventory`){
+            connection.query(`SELECT product_name FROM products`, function(err, res){
+                if(err) throw err;
+                let productNames = [];
+                for(let i = 0; i<res.length; i++){
+                    productNames.push(res[i].product_name);
+                }
+                console.log(productNames);
+                inquirer.prompt([{
+                    name:`product`,
+                    message:`Which of these products would you like to add more too?`,
+                    type:`list`,
+                    choices:productNames
+                },
+                {
+                    name:`amount`,
+                    message:`How much would you like to add?`,
+                    type:`input`
+                }]).then(function(answer){
+                    console.log(`Now updating stock quantity...\n`);
+                    connection.query(`UPDATE products SET stock_quantity = stock_quantity+${answer.amount}
+                    WHERE product_name = '${answer.product}'`, function(err, res){
+                        if(err) throw err;
+                        console.log(`You have successfully update ${answer.product}`)
+                        connection.end();
+                    })
+                });
+            })
+        }
+
     });
 }
