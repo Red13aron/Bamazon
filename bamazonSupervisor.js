@@ -72,6 +72,7 @@ function superviseProducts() {
                     table.addRow(department_id, department_name, over_head_costs, product_sales, total_profit);
                 }
                 console.log(table.toString());
+                
                 connection.end();
             })
         }
